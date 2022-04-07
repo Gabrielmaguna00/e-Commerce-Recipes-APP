@@ -20,11 +20,12 @@
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 const logic = require('./src/logic/Functions')
+require('dotenv').config();
 
 // Syncing all the models at once.
 conn.sync({ force: false }).then(() => {
   logic.uploadDietsToDataBase()
-  server.listen(3001, () => {
+  server.listen(process.env.PORT, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
     
   });
