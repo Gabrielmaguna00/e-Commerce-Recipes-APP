@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import {Link} from 'react-router-dom';
 import { getDiets } from "../../actions";
 import { useDispatch } from "react-redux";
@@ -15,16 +15,14 @@ useEffect(()=>{
 
     return(
         <div className='fondo'>
-        <div className='text'>            
             <h1 className="titulo" ><center>Welcome</center></h1>
             <div className='boton_ingreso'>
             <Link to='/home'>
                 <button className='ingreso'>                                       
-                    Get in                  
+                    GET IN                 
                 </button>
             </Link>
             </div>
-        </div>
         </div>
     )
 }

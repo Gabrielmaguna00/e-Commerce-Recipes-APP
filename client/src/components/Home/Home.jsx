@@ -106,7 +106,7 @@ export default function Home() {
                     {  allRecipes==="No se encontro ninguna receta con el nombre solicitado!"? <div><h1>Error 404</h1>
                     <h5>No se a encontrado una receta que coincida con el nombre</h5></div>
                         : currentRecipe && currentRecipe.map(e=>
-                            <Link to={'/home/'+ e.id}>                                
+                            <Link to={'/home/'+ e.id} className="link__home">                                
                                 <Card title={e.title} createdInDB={e.createdInDB?e.createdInDB:false} diets={e.diets?e.diets:e.Diets} image={e.image} key={e.id} spoonacularScore={e.spoonacularScore}/>
                             </Link>                                                                                      
                     )                   
