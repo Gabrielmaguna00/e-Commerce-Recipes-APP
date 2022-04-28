@@ -4,6 +4,7 @@ import Home from './components/Home/Home.jsx'
 import Landing from './components/LandingPage/LandingPage.jsx'
 import CreateRecipe from './components/CreateRecipe/CreateRecipe.jsx'
 import Detail from './components/DetailRecipe/DetailRecipe.jsx';
+import Paginado from './components/Paginado/Paginado';
 
 function App() {
   
@@ -15,6 +16,7 @@ function App() {
           <Route exact path='/home' element={<Home/>}/>  
           <Route exact path='/Recipe' element={<CreateRecipe/>}/>
           <Route exact path='/home/:id' element={<Detail/>}/>
+          <Route exact path='/prueba' element={<Paginado/>}/>
         </Routes>
       </BrowserRouter> 
     </>

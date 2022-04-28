@@ -1,12 +1,13 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {Link} from 'react-router-dom';
+import {Link, useHistory } from 'react-router-dom';
 import { getRecipes, getDiets, filterRecipesPerDiets, filterByName, filterByScore, getHome } from "../../actions";
 import Card from "../CardRecipe/CardRecipe";
 import Paginado from "../Paginado/Paginado";
 import SearchBar from "../SearchBar/SearchBar";
 import "./Home.css"
+import {ImHome} from "react-icons/im"
 
 export default function Home() {
     const dispatch=useDispatch()
@@ -80,7 +81,7 @@ export default function Home() {
         <div className="all">
             <nav className="nav">
                 <ul>
-                    <li><button onClick={()=>handleHome()}>RECIPES!</button></li>
+                    <li><button onClick={()=>handleHome()} className="home"><ImHome/></button></li>
                     <li className="search"><SearchBar/></li>
                     <li><Link to='/recipe'>Create recipe</Link></li>
                     <li><select onChange={(e)=>handleFilterOrder(e)}>
