@@ -2,7 +2,7 @@ const initialState = {
     recipes:[],
     diets:[],
     allRecipes:[],
-    nameOrScore:'name',
+    // nameOrScore:'name',
     detail:[],
     errores:""
 }
@@ -59,7 +59,7 @@ function rootReducer(state=initialState, action){
                 ) )
             return {
                 ...state,
-                nameOrScore:'name',
+                // nameOrScore:'name',
                 recipes:order
             }
         case 'FILTER_BY_SCORE':
@@ -72,7 +72,7 @@ function rootReducer(state=initialState, action){
             ) )
         return {
             ...state,
-            nameOrScore:'score',
+            // nameOrScore:'score',
             recipes:orden
         }
         case 'RESET':

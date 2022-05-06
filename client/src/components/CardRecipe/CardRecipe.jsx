@@ -9,9 +9,9 @@ export default function Card ({title, image, diets,spoonacularScore, dishTypes, 
                     {/*agregar modificar las cartas y eliminacion de las cradas DB*/}
                     <img src={image} alt="" width='200px' height='250px'/>            
                     <h4>{title}</h4>
-                    <p>{createdInDB?diets.map(e=>e.name+' '):diets.map(e=>e+' ')}</p>
+                    <p>Diets: {createdInDB?diets.map(e=>e.name+' '):diets.map(e=>e+' ')}</p>
                     <p>{dishTypes}</p>
-                    <p>{spoonacularScore}</p>
+                    <p>Score: {spoonacularScore}</p>
                 </div>
     )
 }
