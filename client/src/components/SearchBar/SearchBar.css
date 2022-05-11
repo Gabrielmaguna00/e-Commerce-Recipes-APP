@@ -2,7 +2,7 @@
     padding: 0;
     margin: 0;
     position: relative;
-    display: inline-block;
+    display: flex;
     font-size: 1.25em;
     box-sizing: border-box;    
     font-family: sans-serif;

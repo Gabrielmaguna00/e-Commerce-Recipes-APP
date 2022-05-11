@@ -15,6 +15,7 @@ import Paginado from "../Paginado/Paginado";
 import SearchBar from "../SearchBar/SearchBar";
 import "./Home.css";
 import { ImHome } from "react-icons/im";
+import fondo from "../../Image/landing.jpg"
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -109,7 +110,7 @@ export default function Home() {
           </div>
           <div className="filtros">
             <li className="orden__carta">
-              <span>Order.</span>
+              <span>Order</span>
               <select onChange={(e) => handleFilterOrder(e)}>
                 <option disabled selected>
                   Alphabetic
@@ -119,7 +120,7 @@ export default function Home() {
               </select>
             </li>
             <li>
-              <span>Order by. </span>
+              <span>Order by </span>
               <select onChange={(e) => handleFilterByScore(e)}>
                 <option disabled selected>
                   Score
@@ -129,7 +130,7 @@ export default function Home() {
               </select>
             </li>
             <li>
-              <span>Diets </span>
+              <span>Diets</span>
               <select onChange={(e) => handleFilterRecipesByDiets(e)}>
                 <option value="all">all</option>
                 {allDiets &&
@@ -178,6 +179,9 @@ export default function Home() {
           paginado={paginado}
           currentPage={currentPage}
         />
+      </div>
+      <div className="fondo__home">
+        <img className="img__fondo" src={fondo} alt="" />
       </div>
     </div>
   );
