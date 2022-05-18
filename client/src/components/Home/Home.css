@@ -1,7 +1,7 @@
 .all {
   display: flex;
   flex-direction: column;
-  cursor:default;
+  cursor: default;
 }
 .nav ul {
   list-style: none;
@@ -35,6 +35,7 @@
 .nav ul li a {
   text-decoration: none;
   color: white;
+  cursor: default;
   padding: 1.25em;
 }
 /*
@@ -101,7 +102,7 @@
 .link__home {
   text-decoration: none;
 }
-.link__home Card{
+.link__home Card {
   cursor: pointer;
 }
 .home {
@@ -113,6 +114,10 @@
   cursor: pointer;
   padding: 0.5em;
 }
+.home:hover {
+  color: #092327;
+  background-color: white;
+}
 .create__home {
   border: solid 0.063em white;
   border-radius: 1em;
@@ -122,13 +127,17 @@
   cursor: pointer;
   padding: 1em;
 }
-span{
-    margin-right: 0.2em;
+.create__home:hover {
+  color: #092327;
+  background-color: white;
 }
-.fondo__home{
+span {
+  margin-right: 0.2em;
+}
+.fondo__home {
   width: 100%;
   height: 100%;
-  position:fixed;
+  position: fixed;
   left: 0px;
   top: 0px;
   z-index: -3;

@@ -66,7 +66,6 @@ export default function Detail() {
         ) : (
           <h1>loading...</h1>
         )}
-
         <Link to="/home">
           <button className="boton">BACK</button>
         </Link>

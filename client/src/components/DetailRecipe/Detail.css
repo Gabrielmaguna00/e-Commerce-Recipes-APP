@@ -28,7 +28,7 @@
   cursor: pointer;
   transition: 0.2s;
 }
-.boton:hover{
+.boton:hover {
   background-color: #fff;
   color: black;
 }
@@ -45,7 +45,7 @@
   height: 100%;
   position: fixed;
   left: 0px;
-  top: -12.5em;
+  top: 0;
   z-index: -3;
 }
 .img__detalle {
@@ -54,24 +54,23 @@
 }
 .imagen__detalle {
   border-radius: 2em;
-  width:inherit;
+  width: inherit;
 }
-.scores__detail{
+.scores__detail {
   display: flex;
   flex-direction: row;
   width: 100%;
 }
-
 .score_detail {
   display: flex;
   flex-direction: column;
   width: 50%;
   justify-content: center;
- }
- .text__detail{
+}
+.text__detail {
   display: flex;
   flex-direction: column;
   text-align: left;
   width: 92%;
   align-items: flex-start;
- }
+}
