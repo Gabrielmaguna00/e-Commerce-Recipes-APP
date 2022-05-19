@@ -8,18 +8,20 @@ import "./CreateRecipe.css";
 const validate = (input) => {
   let errors = {};
   if (!input.title) {
-    errors.title = "se requiere un nombre!";
+    errors.title = "a name is required!";
   } else if (!input.summary) {
-    errors.summary = "Se requiere un resumen del plato!";
+    errors.summary = "A summary of the dish is required!";
   } else if (!input.spoonacularScore) {
     errors.spoonacularScore =
-      "Se requiere una puntuacion al plato (del 1 al 100)";
+      "A score is required for the plate (from 1 to 100)!";
   } else if (!(input.spoonacularScore >= 0)) {
-    errors.spoonacularScore = "Colocar un numero mayor o igual a 0";
+    errors.spoonacularScore = "Enter a number greater than or equal to 0";
   } else if (!input.healthScore) {
-    errors.healthScore = "Se requiere un nivel de comida saludable";
+    errors.healthScore = "A healthy level of food is required";
+  } else if (!(input.healthScore >= 0)) {
+    errors.spoonacularScore = "Enter a number greater than or equal to 0";
   } else if (!input.steps) {
-    errors.steps = "Se requiere un paso a paso de la receta";
+    errors.steps = "A step by step recipe is required";
   }
   return errors;
   // (!input.title)?errors.title='se requiere un nombre!':(!input.summary?errors.summary='Se requiere un resumen del plato!':(!input.spoonacularScore?errors.spoonacularScore='Se requiere una puntuacion al plato (del 1 al 100)':(!input.healthScore?errors.healthScore='Se requiere un nivel de comida saludable':(!input.steps?errors.steps='Se requiere un paso a paso de la receta':errors={}))))
@@ -72,7 +74,6 @@ export default function CreateRecipe() {
       e.preventDefault();
       dispatch(postRecipes(input));
       alert("receta creada");
-      console.log(input.diets);
       setInput({
         title: "",
         summary: "",
@@ -97,9 +98,9 @@ export default function CreateRecipe() {
         <button className="boton__create">BACK</button>
       </Link>{" "}
       <form onSubmit={(e) => handleSubmit(e)}>
-        <h1>Crea tu receta</h1>
-        <div>
-          <p className="descripcion">title:</p>
+        <h1>Create your recipe</h1>
+        <div className="form__CreateRecipe">
+          <label className="descripcion">Title:</label>
           <input
             type="text"
             value={input.title}
@@ -107,25 +108,34 @@ export default function CreateRecipe() {
             onChange={(e) => {
               handleChange(e);
             }}
-            className="in"
+            className="input__create"
           />
-          {errors.title && <p>{errors.title}</p>}
-        </div>
-        <div>
-          <p className="descripcion">summary:</p>
-          <input
+          {errors.title && (
+            <span className="error__create">{errors.title}</span>
+          )}
+          <label className="descripcion">Summary:</label>
+          {/* <input
             type="text"
             value={input.summary}
             name="summary"
             onChange={(e) => {
               handleChange(e);
             }}
-            className="in"
-          />
-          {errors.summary && <p>{errors.summary}</p>}
-        </div>
-        <div>
-          <p className="descripcion">score:</p>
+            className="input__create"
+          /> */}
+          <textarea
+            name="summary"
+            rows="4"
+            value={input.summary}
+            onChange={(e) => {
+              handleChange(e);
+            }}
+            className="textarea__createrecipe"
+          ></textarea>
+          {errors.summary && (
+            <span className="error__create">{errors.summary}</span>
+          )}
+          <label className="descripcion">Score:</label>
           <input
             type="number"
             value={input.spoonacularScore}
@@ -133,12 +143,12 @@ export default function CreateRecipe() {
             onChange={(e) => {
               handleChange(e);
             }}
-            className="in"
+            className="input__create"
           />
-          {errors.spoonacularScore && <p>{errors.spoonacularScore}</p>}
-        </div>
-        <div>
-          <p className="descripcion">healthScore:</p>
+          {errors.spoonacularScore && (
+            <span className="error__create">{errors.spoonacularScore}</span>
+          )}
+          <label className="descripcion">HealthScore:</label>
           <input
             type="number"
             value={input.healthScore}
@@ -146,25 +156,34 @@ export default function CreateRecipe() {
             onChange={(e) => {
               handleChange(e);
             }}
-            className="in"
+            className="input__create"
           />
-          {errors.healthScore && <p>{errors.healthScore}</p>}
-        </div>
-        <div>
-          <p className="descripcion">steps:</p>
-          <input
+          {errors.healthScore && (
+            <span className="error__create">{errors.healthScore}</span>
+          )}
+          <label className="descripcion">Steps:</label>
+          <textarea
+            name="steps"
+            value={input.steps}
+            onChange={(e) => {
+              handleChange(e);
+            }}
+            rows="4"
+            className="textarea__createrecipe"
+          />
+          {/* <input
             type="text"
             value={input.steps}
             name="steps"
             onChange={(e) => {
               handleChange(e);
             }}
-            className="in"
-          />
-          {errors.steps && <p>{errors.steps}</p>}
-        </div>
-        <div>
-          <p className="descripcion">imagen:</p>
+            className="input__create"
+          /> */}
+          {errors.steps && (
+            <span className="error__create">{errors.steps}</span>
+          )}
+          <label className="descripcion">Image:</label>
           <input
             type="text"
             value={input.image}
@@ -172,46 +191,48 @@ export default function CreateRecipe() {
             onChange={(e) => {
               handleChange(e);
             }}
-            className="in"
+            className="input__create"
           />
-          {errors.image && <p>{errors.image}</p>}
+          {errors.image && (
+            <span className="error__create">{errors.image}</span>
+          )}
+          <label className="descripcion">Diets</label>
+          <select onChange={(e) => handleSelect(e)}>
+            {diets.map((e) => (
+              <option value={e}>{e}</option>
+            ))}
+          </select>
+          {console.log(
+            "caso a: ",
+            Object.keys(errors).length > 0,
+            " caso b : ",
+            input.title.length === 0
+          )}
+          {Object.keys(errors).length > 0 || input.title.length === 0 ? (
+            <label>Incomplete Form</label>
+          ) : (
+            <button type="submit" className="button2">
+              Create
+            </button>
+          )}
+          <p className="diets">
+            {input.diets.map((e) => (
+              <div>
+                <ul>
+                  <li>
+                    {e}
+                    <button
+                      className="close"
+                      onClick={() => handleDeletediets(e)}
+                    >
+                      x
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            ))}
+          </p>
         </div>
-        <p className="descripcion">diets</p>
-        <select onChange={(e) => handleSelect(e)}>
-          {diets.map((e) => (
-            <option value={e}>{e}</option>
-          ))}
-        </select>
-        {console.log(
-          "esto es errors: ",
-          errors.length,
-          Object.keys(errors).length > 0
-        )}
-        {Object.keys(errors).length > 0 ? (
-          <p>falta completar</p>
-        ) : (
-          <button type="submit" className="button2">
-            Crear
-          </button>
-        )}
-
-        <p className="diets">
-          {input.diets.map((e) => (
-            <div>
-              <ul>
-                <li>
-                  {e}
-                  <button
-                    className="close"
-                    onClick={() => handleDeletediets(e)}
-                  >
-                    x
-                  </button>
-                </li>
-              </ul>
-            </div>
-          ))}
-        </p>
       </form>
     </div>
   );

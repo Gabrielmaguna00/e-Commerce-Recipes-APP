@@ -6,7 +6,6 @@
   color: black;
 }
 .conteiner {
-  /* background-color: #e8e8e8; */
   background-image: url("../../Image/fondo.jpg");
   box-sizing: border-box;
   align-items: center;
@@ -21,36 +20,29 @@ form {
   text-align: center;
   margin: 0 auto;
 }
-.in {
-  width: 250px;
-  margin: 10px;
-  border: 0;
+.input__create {
+  width: 80%;
+  margin: 0.8em;
   outline: none;
   border: solid 1px #ccc;
-  padding: 7px;
-}
-.diets div ul {
-  list-style: none;
-}
-.close {
-  padding: 1px 2px;
-  background-color: #555555;
-}
-.boton__create {
-  background-color: black;
-  border: none;
+  padding: 0.5em;
   border-radius: 0.5em;
-  color: white;
-  width: 7em;
-  padding: 0.938em 2em;
-  text-align: center;
-  text-decoration: none;
-  font-size: 1em;
-  margin: 0.313em;
-  cursor: pointer;
-  transition: 0.2s;
 }
-.boton__create:hover {
-  background-color: #fff;
+.form__CreateRecipe {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  align-items: initial;
+}
+.textarea__createrecipe {
   color: black;
+  margin: 0.8em;
+  border: solid 0.1em #ccc;
+  border-radius: 0.5em;
+  width: 80%;
+  padding: 0.5em;
+}
+.error__create{
+  color: red;
+  margin-bottom: 0.5em;
 }
