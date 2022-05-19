@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDiets, postRecipes } from "../../actions";
 import "./CreateRecipe.css";
+import fondo_create from "../../Image/fondo.jpg"
 
 const validate = (input) => {
   let errors = {};
@@ -11,11 +12,6 @@ const validate = (input) => {
     errors.title = "a name is required!";
   } else if (!input.summary) {
     errors.summary = "A summary of the dish is required!";
-  } else if (!input.spoonacularScore) {
-    errors.spoonacularScore =
-      "A score is required for the plate (from 1 to 100)!";
-  } else if (!(input.spoonacularScore >= 0)) {
-    errors.spoonacularScore = "Enter a number greater than or equal to 0";
   } else if (!input.healthScore) {
     errors.healthScore = "A healthy level of food is required";
   } else if (!(input.healthScore >= 0)) {
@@ -35,7 +31,6 @@ export default function CreateRecipe() {
     title: "",
     summary: "",
     spoonacularScore: "",
-    healthScore: "",
     steps: "",
     image: "",
     diets: [],
@@ -95,7 +90,8 @@ export default function CreateRecipe() {
   return (
     <div className="conteiner">
       <Link to="/home">
-        <button className="boton__create">BACK</button>
+        <button className="boton__create
+        ">BACK</button>
       </Link>{" "}
       <form onSubmit={(e) => handleSubmit(e)}>
         <h1>Create your recipe</h1>
@@ -114,15 +110,6 @@ export default function CreateRecipe() {
             <span className="error__create">{errors.title}</span>
           )}
           <label className="descripcion">Summary:</label>
-          {/* <input
-            type="text"
-            value={input.summary}
-            name="summary"
-            onChange={(e) => {
-              handleChange(e);
-            }}
-            className="input__create"
-          /> */}
           <textarea
             name="summary"
             rows="4"
@@ -135,7 +122,7 @@ export default function CreateRecipe() {
           {errors.summary && (
             <span className="error__create">{errors.summary}</span>
           )}
-          <label className="descripcion">Score:</label>
+          {/* <label className="descripcion">Score:</label>
           <input
             type="number"
             value={input.spoonacularScore}
@@ -143,11 +130,11 @@ export default function CreateRecipe() {
             onChange={(e) => {
               handleChange(e);
             }}
-            className="input__create"
+            className="number__create"
           />
           {errors.spoonacularScore && (
             <span className="error__create">{errors.spoonacularScore}</span>
-          )}
+          )} */}
           <label className="descripcion">HealthScore:</label>
           <input
             type="number"
@@ -156,7 +143,7 @@ export default function CreateRecipe() {
             onChange={(e) => {
               handleChange(e);
             }}
-            className="input__create"
+            className="number__create"
           />
           {errors.healthScore && (
             <span className="error__create">{errors.healthScore}</span>
@@ -171,15 +158,6 @@ export default function CreateRecipe() {
             rows="4"
             className="textarea__createrecipe"
           />
-          {/* <input
-            type="text"
-            value={input.steps}
-            name="steps"
-            onChange={(e) => {
-              handleChange(e);
-            }}
-            className="input__create"
-          /> */}
           {errors.steps && (
             <span className="error__create">{errors.steps}</span>
           )}
@@ -197,7 +175,7 @@ export default function CreateRecipe() {
             <span className="error__create">{errors.image}</span>
           )}
           <label className="descripcion">Diets</label>
-          <select onChange={(e) => handleSelect(e)}>
+          <select onChange={(e) => handleSelect(e)} className="select__create">
             {diets.map((e) => (
               <option value={e}>{e}</option>
             ))}
@@ -234,6 +212,9 @@ export default function CreateRecipe() {
           </p>
         </div>
       </form>
+      <div className="fondo__create">
+        <img className="img__create" src={fondo_create} alt="" />
+      </div>
     </div>
   );
 }

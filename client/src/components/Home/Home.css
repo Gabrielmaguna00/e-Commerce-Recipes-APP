@@ -1,3 +1,6 @@
+*{
+  font-family: 'Raleway', sans-serif;
+}
 .all {
   display: flex;
   flex-direction: column;
@@ -38,10 +41,6 @@
   cursor: default;
   padding: 1.25em;
 }
-/*
-.nav ul li a:hover{
-    background: #ef8354;
-} */
 .nav ul li select {
   display: flex;
   flex-direction: column;
@@ -51,7 +50,7 @@
   height: 1.563em;
   background: #506266;
   color: white;
-  font-family: sans-serif;
+  font-family: 'Roboto Mono', monospace;
 }
 .nav ul li select option {
   padding: 0 1.875em 0 0.625em;
@@ -126,6 +125,7 @@
   outline: none;
   cursor: pointer;
   padding: 1em;
+  font-family: 'Roboto Mono', monospace;
 }
 .create__home:hover {
   color: #092327;

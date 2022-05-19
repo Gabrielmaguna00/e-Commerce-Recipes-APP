@@ -33,7 +33,7 @@ export default function Home() {
     indexFirstPositionRecipe,
     lastPositionRecipe
   );
-
+    // console.log(allRecipes, standRecipes)
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -165,7 +165,7 @@ export default function Home() {
                   diets={e.diets ? e.diets : e.Diets}
                   image={e.image}
                   key={e.id}
-                  spoonacularScore={e.spoonacularScore}
+                  healthScore={e.healthScore}
                 />
               </Link>
             ))

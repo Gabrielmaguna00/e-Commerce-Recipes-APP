@@ -5,10 +5,11 @@ export default function Card({
   title,
   image,
   diets,
-  spoonacularScore,
+  healthScore,
   dishTypes,
   createdInDB,
 }) {
+  // console.log(spoonacularScore)
   return (
     <div className="card">
       {createdInDB ? <button>x</button> : <></>}
@@ -23,7 +24,7 @@ export default function Card({
             : diets.map((e) => e + " ")}
         </p>
         <p>{dishTypes}</p>
-        <p>Score: {spoonacularScore}</p>
+        <p>healthScore: {healthScore}</p>
       </div>
     </div>
   );

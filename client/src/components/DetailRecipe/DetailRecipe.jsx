@@ -8,8 +8,6 @@ import fondo from "../../Image/detalle-1PRUEBA.jpg";
 
 export default function Detail() {
   let params = useParams();
-  console.log(params);
-  console.log(params.id);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getdetail(params.id));
@@ -18,11 +16,6 @@ export default function Detail() {
     };
   }, []);
   const recipe = useSelector((state) => state.detail);
-  console.log("esto es recipe: ", recipe);
-  // let sumary=recipe.summary
-  // console.log(typeof recipe.suma)
-  // var aux = sumary.replace(/<[^>]+>/g, '');
-  // console.log(aux)
   return (
     <div>
       <div className="container__detail">
@@ -35,33 +28,36 @@ export default function Detail() {
               alt="img not found"
             />
             <div className="text__detail">
-            <h2 className="info">Diets:</h2>
-            <p className="info_text">{recipe.diets + " "}</p>
-            {/* <h5>dishtypes:{recipe.dishTypes+(' ')}</h5> */}
-            <h2 className="info">Summary: </h2>
-            {
-              <p className="info_text">
-                {recipe.summary.replace(/<[^>]*>?/g, "")}
-              </p>
-            }
-            {recipe.steps === "" ? (
-              <></>
-            ) : (
-              <>
-                <h2 className="info">Steps: </h2>
-                <p className="info_text">{recipe.steps}</p>
-              </>
-            )}
-            <div className="scores__detail">
-              <div className="score_detail">
-                <h2 className="info">Score:</h2>
-                <p className="info_text">{recipe.spoonacularScore}</p>
+              <h2 className="info">Diets:</h2>
+              <p className="info_text">{recipe.diets + " "}</p>
+              {/* <h5>dishtypes:{recipe.dishTypes+(' ')}</h5> */}
+              <h2 className="info">Summary: </h2>
+              {
+                <p className="info_text">
+                  {recipe.summary.replace(/<[^>]*>?/g, "")}
+                </p>
+              }
+              {recipe.steps === "" ? (
+                <></>
+              ) : (
+                <>
+                  <h2 className="info">Steps: </h2>
+                  <p className="info_text">{recipe.steps}</p>
+                </>
+              )}
+              <div className="scores__detail">
+                {recipe.spoonacularScore && (
+                  <div className="score_detail">
+                    <h2 className="info">Score:</h2>
+                    <p className="info_text">{recipe.spoonacularScore}</p>
+                  </div>
+                )}
+                <div className="score_detail">
+                  <h2 className="info">Healthy punctuation:</h2>
+                  <p className="info_text">{recipe.healthScore}</p>
+                </div>
               </div>
-              <div className="score_detail">
-                <h2 className="info">Healthy punctuation:</h2>
-                <p className="info_text">{recipe.healthScore}</p>
-              </div>
-            </div></div>
+            </div>
           </div>
         ) : (
           <h1>loading...</h1>
