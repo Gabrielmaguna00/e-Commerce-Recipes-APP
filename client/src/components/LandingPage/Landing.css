@@ -13,8 +13,7 @@
   justify-content: space-evenly;
 }
 .titulo {
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode";
+  font-family: "Raleway", sans-serif;
   color: #f2f2f2;
   font-size: 5em;
 }

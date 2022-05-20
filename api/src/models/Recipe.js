@@ -19,13 +19,9 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    spoonacularScore: {
-      type: DataTypes.INTEGER,
-      allowNull:true
-    },
     healthScore: {
       type: DataTypes.INTEGER,
-      allowNull:true
+      allowNull:false
     },
     steps: {
       type: DataTypes.STRING,

@@ -10,10 +10,10 @@ const router = Router();
 
 router.post('/', async (req, res)=>{
 try {
-    let {title, summary, spoonacularScore, healthScore, steps, image, diets}=req.body
+    let {title, summary, healthScore, steps, image, diets}=req.body
     // console.log(title, summary, spoonacularScore, healthScore, steps, image, diets)
     image?image=image:image='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTplLkZuWHYGRvGcCPKdFOadvidGK1xnm9FUw&usqp=CAU'
-    let addRecipe = await Recipe.create({title, summary, spoonacularScore, image, healthScore, steps})
+    let addRecipe = await Recipe.create({title, summary, image, healthScore, steps})
     let dietDB = await Diet.findAll({
         where: {name : diets}
     })

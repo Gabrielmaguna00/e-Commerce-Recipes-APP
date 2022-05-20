@@ -1,9 +1,13 @@
 import React from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import "./Landing.css";
-import video from "../../Image/videocomida.mp4"
+import video from "../../Image/videocomida.mp4";
+import getDiets from "../../actions/index";
 
 export default function Landing() {
+  const dispatch = useDispatch();
   return (
     <div className="fondo">
       <h1 className="titulo">

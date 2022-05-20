@@ -13,7 +13,7 @@ export function getRecipes() {
 export function getDiets() {
   return async function (dispatch) {
     let json = await axios.get("/types");
-    let diets = json.data.map((e) => e.name);
+    let diets = await json.data.map((e) => e.name);
     return dispatch({
       type: "GET_DIETS",
       payload: diets,

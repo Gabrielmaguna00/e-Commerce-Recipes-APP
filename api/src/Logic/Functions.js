@@ -10,15 +10,15 @@ module.exports={
     // ee655952b0ff471ab393e8a9b09c06ab
     // const api=await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=ee655952b0ff471ab393e8a9b09c06ab&query=${name}&number=1&addRecipeInformation=true`)
     const api=await axios.get(`https://api.spoonacular.com/recipes/complexSearch?query=${name}&number=100&addRecipeInformation=true&apiKey=${API_KEYS}`)
-    console.log(api)
+    console.log(api.data.results)
     const apiInfo= await api.data.results.map(e=>{const {title, image, diets, dishTypes, id, spoonacularScore}=e; 
         return {title, image, diets, dishTypes, id, spoonacularScore}})
         return apiInfo},
 
     apiRecipes: async()=>{//traigo todas las recetas de la api
         const api=await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&addRecipeInformation=true&apiKey=${API_KEYS}`)
-        const apiInfo= await api.data.results.map(e=>{const {title, image, diets, dishTypes, id, spoonacularScore}=e; 
-            return {title, image, diets, dishTypes, id, spoonacularScore}})
+        const apiInfo= await api.data.results.map(e=>{const {title, image, diets, dishTypes, id, spoonacularScore, healthScore}=e; 
+            return {title, image, diets, dishTypes, id, spoonacularScore, healthScore}})
         return apiInfo},
 
     dBRecipes: async()=>{//traigo la info de mi base de datos

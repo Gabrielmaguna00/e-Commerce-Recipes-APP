@@ -4,7 +4,9 @@ import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDiets, postRecipes } from "../../actions";
 import "./CreateRecipe.css";
-import fondo_create from "../../Image/fondo.jpg"
+import fondo_create from "../../Image/fondo.jpg";
+import DeleteIcon from "@mui/icons-material/Delete";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
 const validate = (input) => {
   let errors = {};
@@ -90,8 +92,12 @@ export default function CreateRecipe() {
   return (
     <div className="conteiner">
       <Link to="/home">
-        <button className="boton__create
-        ">BACK</button>
+        <button
+          className="boton__create
+        "
+        >
+          BACK
+        </button>
       </Link>{" "}
       <form onSubmit={(e) => handleSubmit(e)}>
         <h1>Create your recipe</h1>
@@ -176,6 +182,9 @@ export default function CreateRecipe() {
           )}
           <label className="descripcion">Diets</label>
           <select onChange={(e) => handleSelect(e)} className="select__create">
+            <option disabled selected>
+              None
+            </option>
             {diets.map((e) => (
               <option value={e}>{e}</option>
             ))}
@@ -193,23 +202,15 @@ export default function CreateRecipe() {
               Create
             </button>
           )}
-          <p className="diets">
-            {input.diets.map((e) => (
-              <div>
-                <ul>
-                  <li>
-                    {e}
-                    <button
-                      className="close"
-                      onClick={() => handleDeletediets(e)}
-                    >
-                      x
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            ))}
-          </p>
+          {input.diets.map((e) => (
+            <div className="conteiner_diets_create">
+              <p className="diets_create">{e}</p>
+              <DeleteForeverIcon
+                onClick={() => handleDeletediets(e)}
+                className="icon__delete"
+              ></DeleteForeverIcon>
+            </div>
+          ))}
         </div>
       </form>
       <div className="fondo__create">

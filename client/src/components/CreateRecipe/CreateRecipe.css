@@ -19,7 +19,7 @@ form {
   padding: 0.625em;
   text-align: center;
   margin: 0 auto;
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
 }
 .input__create {
   width: 80%;
@@ -28,12 +28,13 @@ form {
   border: solid 1px black;
   padding: 0.5em;
   border-radius: 0.5em;
+  font-size: 1em;
 }
 .form__CreateRecipe {
   display: flex;
   flex-direction: column;
   text-align: left;
-  align-items: initial;
+  align-items: flex-start;
 }
 .textarea__createrecipe {
   color: black;
@@ -42,12 +43,13 @@ form {
   border-radius: 0.5em;
   width: 80%;
   padding: 0.5em;
+  font-size: 1em;
 }
-.error__create{
+.error__create {
   color: red;
   margin-bottom: 0.5em;
 }
-.number__create{
+.number__create {
   width: 8%;
   margin: 0.8em;
   outline: none;
@@ -55,8 +57,13 @@ form {
   padding: 0.5em;
   border-radius: 0.5em;
 }
-.select__create{
-  width: 30%
+.select__create {
+  width: auto;
+  padding: 0.5em;
+  font-size: 1em;
+  border-radius: 0.5em;
+  margin: 0.8em;
+  border: solid 0.1em black;
 }
 .boton__create {
   background-color: black;
@@ -83,4 +90,16 @@ form {
 .img__create {
   width: 100vw;
   height: 100vh;
+}
+.diets_create {
+  width: 50%;
+}
+.conteiner_diets_create {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+}
+.icon__delete {
+  cursor: pointer;
 }
