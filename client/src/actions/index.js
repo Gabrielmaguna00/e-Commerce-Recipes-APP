@@ -64,6 +64,12 @@ export function getHome() {
     type: "HOME",
   };
 }
+export function deleteRecipe(id) {
+  return async function (dispatch) {
+    const json = await axios.delete(`/delete/${id}`)
+    getRecipes()
+  };
+}
 export function reset() {
   return {
     type: "RESET",

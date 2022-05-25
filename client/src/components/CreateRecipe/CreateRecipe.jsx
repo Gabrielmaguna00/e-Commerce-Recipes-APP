@@ -128,19 +128,6 @@ export default function CreateRecipe() {
           {errors.summary && (
             <span className="error__create">{errors.summary}</span>
           )}
-          {/* <label className="descripcion">Score:</label>
-          <input
-            type="number"
-            value={input.spoonacularScore}
-            name="spoonacularScore"
-            onChange={(e) => {
-              handleChange(e);
-            }}
-            className="number__create"
-          />
-          {errors.spoonacularScore && (
-            <span className="error__create">{errors.spoonacularScore}</span>
-          )} */}
           <label className="descripcion">HealthScore:</label>
           <input
             type="number"

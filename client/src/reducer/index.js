@@ -2,7 +2,6 @@ const initialState = {
   recipes: [],
   diets: [],
   allRecipes: [],
-  // nameOrScore:'name',
   detail: [],
   errores: "",
 };
@@ -59,10 +58,18 @@ function rootReducer(state = initialState, action) {
       const order =
         action.payload === "asc"
           ? state.recipes.sort((a, b) =>
-              a.title > b.title ? 1 : b.title > a.title ? -1 : 0
+              a.title.toLowerCase() > b.title.toLowerCase()
+                ? 1
+                : b.title.toLowerCase() > a.title.toLowerCase()
+                ? -1
+                : 0
             )
           : state.recipes.sort((a, b) =>
-              a.title > b.title ? -1 : b.title > a.title ? 1 : 0
+              a.title.toLowerCase() > b.title.toLowerCase()
+                ? -1
+                : b.title.toLowerCase() > a.title.toLowerCase()
+                ? 1
+                : 0
             );
       return {
         ...state,
@@ -70,8 +77,8 @@ function rootReducer(state = initialState, action) {
         recipes: order,
       };
     case "FILTER_BY_SCORE":
-      console.log(state.recipes)
-      const orden = 
+      console.log(state.recipes);
+      const orden =
         action.payload === "des"
           ? state.recipes.sort((a, b) =>
               a.healthScore > b.healthScore

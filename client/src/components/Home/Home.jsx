@@ -15,14 +15,13 @@ import Paginado from "../Paginado/Paginado";
 import SearchBar from "../SearchBar/SearchBar";
 import "./Home.css";
 import { ImHome } from "react-icons/im";
-import fondo from "../../Image/landing.jpg"
+import fondo from "../../Image/landing.jpg";
 
 export default function Home() {
   const dispatch = useDispatch();
   const standRecipes = useSelector((state) => state.allRecipes);
   const allRecipes = useSelector((state) => state.recipes);
   const allDiets = useSelector((state) => state.diets);
-  // const nameOrScore = useSelector((state) => state.nameOrScore);
   const [currentPage, setCurrentPage] = useState(1);
   const [order, setOrder] = useState("");
   const [asc_des, setAsc_Des] = useState({ asc: "asc", des: "des" }); //estado local para ver en que posicion se desea ordenar. si ascendente o descendente
@@ -33,7 +32,6 @@ export default function Home() {
     indexFirstPositionRecipe,
     lastPositionRecipe
   );
-    // console.log(allRecipes, standRecipes)
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -45,7 +43,8 @@ export default function Home() {
 
   useEffect(() => {
     //guardo el estado que recibi de /recipes, para que en caso de tener que utilizarlo no debe hacer otro llamado a la api, provocando una agilizacion de la app
-    standRecipes.length === 0 && dispatch(getRecipes());
+    // standRecipes.length === 0 && 
+    dispatch(getRecipes());
   }, [dispatch]);
 
   let handleHome = () => {
@@ -82,7 +81,6 @@ export default function Home() {
       setOrder(`order1 ${e}`);
     }
   };
-
   return (
     <div className="all">
       <nav className="nav">
@@ -165,6 +163,7 @@ export default function Home() {
                   diets={e.diets ? e.diets : e.Diets}
                   image={e.image}
                   key={e.id}
+                  id={e.id}
                   healthScore={e.healthScore}
                 />
               </Link>

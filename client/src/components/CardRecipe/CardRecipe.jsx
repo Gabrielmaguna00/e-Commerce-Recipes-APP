@@ -1,5 +1,8 @@
 import React from "react";
 import "./CardRecipe.css";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { deleteRecipe } from "../../actions";
 
 export default function Card({
   title,
@@ -8,12 +11,15 @@ export default function Card({
   healthScore,
   dishTypes,
   createdInDB,
+  id
 }) {
-  // console.log(spoonacularScore)
+  const dispatch = useDispatch();
+  const healthDelete =()=>{
+    dispatch(deleteRecipe(id))
+  }
+  console.log(healthScore);
   return (
     <div className="card">
-      {createdInDB ? <button>x</button> : <></>}
-      {/*agregar modificar las cartas y eliminacion de las cradas DB*/}
       <img src={image} alt="" width="200px" height="250px" />
       <div className="text__card">
         <h4>{title}</h4>

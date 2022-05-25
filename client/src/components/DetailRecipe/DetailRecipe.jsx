@@ -5,6 +5,7 @@ import { getdetail, reset } from "../../actions/index";
 import { useEffect } from "react";
 import styles from "./Detail.css";
 import fondo from "../../Image/detalle-1PRUEBA.jpg";
+import { deleteRecipe } from "../../actions";
 
 export default function Detail() {
   let params = useParams();
@@ -16,6 +17,11 @@ export default function Detail() {
     };
   }, []);
   const recipe = useSelector((state) => state.detail);
+  const healthDelete = () => {
+    dispatch(deleteRecipe(params.id));
+    alert("receta eliminada!");
+  };
+  console.log(recipe);
   return (
     <div>
       <div className="container__detail">
@@ -30,7 +36,6 @@ export default function Detail() {
             <div className="text__detail">
               <h2 className="info">Diets:</h2>
               <p className="info_text">{recipe.diets + " "}</p>
-              {/* <h5>dishtypes:{recipe.dishTypes+(' ')}</h5> */}
               <h2 className="info">Summary: </h2>
               {
                 <p className="info_text">
@@ -46,16 +51,22 @@ export default function Detail() {
                 </>
               )}
               <div className="scores__detail">
-                {recipe.spoonacularScore && (
-                  <div className="score_detail">
-                    <h2 className="info">Score:</h2>
-                    <p className="info_text">{recipe.spoonacularScore}</p>
-                  </div>
-                )}
                 <div className="score_detail">
                   <h2 className="info">Healthy punctuation:</h2>
                   <p className="info_text">{recipe.healthScore}</p>
                 </div>
+                {recipe.createdInDB === true ? (
+                  <Link to="/home">
+                    <button
+                      onClick={() => healthDelete()}
+                      className="boton_delete"
+                    >
+                      Delete
+                    </button>
+                  </Link>
+                ) : (
+                  <></>
+                )}
               </div>
             </div>
           </div>
