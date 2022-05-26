@@ -1,12 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDiets, postRecipes } from "../../actions";
 import "./CreateRecipe.css";
 import fondo_create from "../../Image/fondo.jpg";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import Swal from "sweetalert2";
 
 const validate = (input) => {
   let errors = {};
@@ -16,8 +17,8 @@ const validate = (input) => {
     errors.summary = "A summary of the dish is required!";
   } else if (!input.healthScore) {
     errors.healthScore = "A healthy level of food is required";
-  } else if (!(input.healthScore >= 0)) {
-    errors.spoonacularScore = "Enter a number greater than or equal to 0";
+  } else if ((!(input.healthScore >= 0)||!(input.healthScore<=100))) {
+    errors.healthScore = "Enter a number greater than or equal to 0 and less than or equal to 100";
   } else if (!input.steps) {
     errors.steps = "A step by step recipe is required";
   }
@@ -38,6 +39,7 @@ export default function CreateRecipe() {
     diets: [],
   });
   const [errors, setErrors] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getDiets());
@@ -66,11 +68,19 @@ export default function CreateRecipe() {
   const handleSubmit = (e) => {
     if (Object.keys(errors).length > 0) {
       e.preventDefault();
-      alert("faltan valores por ingresar!");
+      // alert("faltan valores por ingresar!");
     } else {
       e.preventDefault();
       dispatch(postRecipes(input));
-      alert("receta creada");
+      Swal.fire({
+        title: 'Success!',
+        text: 'Recipe created!',
+        icon: 'success',
+        confirmButtonText: 'Ok!'
+      }).then(function () {
+        navigate("/home");
+      });
+      // alert("receta creada");
       setInput({
         title: "",
         summary: "",
@@ -93,7 +103,7 @@ export default function CreateRecipe() {
     <div className="conteiner">
       <Link to="/home">
         <button
-          className="boton__create
+          className="boton__back
         "
         >
           BACK
@@ -185,7 +195,7 @@ export default function CreateRecipe() {
           {Object.keys(errors).length > 0 || input.title.length === 0 ? (
             <label>Incomplete Form</label>
           ) : (
-            <button type="submit" className="button2">
+            <button type="submit" className="boton_create">
               Create
             </button>
           )}

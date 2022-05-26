@@ -12,7 +12,6 @@ module.exports = {
     const api = await axios.get(
       `https://api.spoonacular.com/recipes/complexSearch?query=${name}&number=100&addRecipeInformation=true&apiKey=${API_KEYS}`
     );
-    console.log(api.data.results);
     const apiInfo = await api.data.results.map((e) => {
       const { title, image, diets, dishTypes, id, healthScore }= e;
       return { title, image, diets, dishTypes, id, healthScore };
@@ -65,25 +64,17 @@ module.exports = {
 
   idRecipes: async (id) => {
     let aux = id.toString();
-    // console.log(aux)
     if (aux.length > 15) {
       let dbinf = await module.exports.dBRecipes();
-      // console.log(dbinf)
       let idDB = await dbinf.filter((e) => e.dataValues.id === aux);
       idDB = await idDB[0].dataValues;
-      console.log(
-        "esto es lo que envia al final",
-        idDB.Diets.map((e) => e.dataValues.name)
-      );
       const diets = await idDB.Diets.map((e) => e.dataValues.name);
       const { title, image, dishTypes, summary, healthScore, steps, createdInDB } = idDB;
       return { title, image, diets, dishTypes, summary, healthScore, steps, createdInDB };
     } else {
-      console.log("esto se mi id: ", id);
       const apiID = await axios.get(
         `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEYS}`
       );
-      console.log("esto llega del error: ", apiID.data);
       const {
         title,
         image,

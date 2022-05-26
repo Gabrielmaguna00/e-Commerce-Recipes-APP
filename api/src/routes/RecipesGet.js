@@ -13,7 +13,6 @@ router.get("/", async (req, res) => {
     let name = req.query.name;
     if (name) {
       const recipes = await logic.allRecipesAndName(name.toLowerCase());
-      // console.log('estoy en la ruta',recipes.length)
       recipes.length !== 0
         ? res.status(200).send(recipes)
         : res
@@ -31,7 +30,6 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     let id = req.params.id;
-    console.log(id);
     const recipeID = await logic.idRecipes(id);
     if (recipeID) {
       res.status(200).send(recipeID);

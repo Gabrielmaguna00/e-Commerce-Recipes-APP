@@ -65,7 +65,7 @@ form {
   margin: 0.8em;
   border: solid 0.1em black;
 }
-.boton__create {
+.boton__back {
   background-color: black;
   border: none;
   border-radius: 0.5em;
@@ -102,4 +102,23 @@ form {
 }
 .icon__delete {
   cursor: pointer;
+}
+.boton_create {
+  background-color: #0d0d0d;
+  border: solid 0.1em white;
+  border-radius: 0.5em;
+  color: white;
+  width: auto;
+  padding: 0.7em 1em;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.2em;
+  margin: 0.313em;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.boton_create:hover {
+  background-color: #23BF0B;
+  color: black;
+  border-color: #0d0d0d;
 }
