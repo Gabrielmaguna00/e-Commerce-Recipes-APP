@@ -1,8 +1,5 @@
 import React from "react";
 import "./CardRecipe.css";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { deleteRecipe } from "../../actions";
 
 export default function Card({
   title,
@@ -13,11 +10,6 @@ export default function Card({
   createdInDB,
   id
 }) {
-  const dispatch = useDispatch();
-  const healthDelete =()=>{
-    dispatch(deleteRecipe(id))
-  }
-  console.log(healthScore);
   return (
     <div className="card">
       <img src={image} alt="" width="200px" height="250px" />

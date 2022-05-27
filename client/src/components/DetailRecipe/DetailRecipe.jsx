@@ -1,26 +1,35 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getdetail, reset } from "../../actions/index";
 import { useEffect } from "react";
-import styles from "./Detail.css";
+import "./Detail.css";
 import fondo from "../../Image/detalle-1PRUEBA.jpg";
 import { deleteRecipe } from "../../actions";
+import Swal from "sweetalert2";
 
 export default function Detail() {
-  let params = useParams();
+  const params = useParams();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getdetail(params.id));
     return () => {
       dispatch(reset());
     };
-  }, []);
+  }, [dispatch, params.id]);
   const recipe = useSelector((state) => state.detail);
-  const healthDelete = () => {
+  const healthDelete = (e) => {
+    e.preventDefault()
     dispatch(deleteRecipe(params.id));
-    alert("receta eliminada!");
-  };
+    Swal.fire({
+      title: "Success!",
+      text: "Deleted Recipe!",
+      icon: "success",
+      confirmButtonText: "Ok!",
+    }).then(function () {
+      navigate("/home");
+    });  };
   console.log(recipe);
   return (
     <div>
@@ -58,7 +67,7 @@ export default function Detail() {
                 {recipe.createdInDB === true ? (
                   <Link to="/home">
                     <button
-                      onClick={() => healthDelete()}
+                      onClick={(e) => healthDelete(e)}
                       className="boton_delete"
                     >
                       Delete

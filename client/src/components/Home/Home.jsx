@@ -19,7 +19,7 @@ import fondo from "../../Image/landing.jpg";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const standRecipes = useSelector((state) => state.allRecipes);
+  // const standRecipes = useSelector((state) => state.allRecipes);
   const allRecipes = useSelector((state) => state.recipes);
   const allDiets = useSelector((state) => state.diets);
   const [currentPage, setCurrentPage] = useState(1);
@@ -39,11 +39,11 @@ export default function Home() {
   useEffect(() => {
     //traigo las dietas para mostrarlas en mi select, en caso que el estado este vacio: despacho mi action
     allDiets.length === 0 && dispatch(getDiets());
-  }, [dispatch]);
+  }, [dispatch, allDiets.length]);
 
   useEffect(() => {
     //guardo el estado que recibi de /recipes, para que en caso de tener que utilizarlo no debe hacer otro llamado a la api, provocando una agilizacion de la app
-    // standRecipes.length === 0 && 
+    // standRecipes.length === 0 &&
     dispatch(getRecipes());
   }, [dispatch]);
 

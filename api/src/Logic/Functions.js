@@ -7,8 +7,6 @@ const { Recipe, Diet } = require("../db");
 module.exports = {
   apiRecipesname: async (name) => {
     //traigo todas las recetas de la api que contengan el name ingresado
-    // ee655952b0ff471ab393e8a9b09c06ab
-    // const api=await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=ee655952b0ff471ab393e8a9b09c06ab&query=${name}&number=1&addRecipeInformation=true`)
     const api = await axios.get(
       `https://api.spoonacular.com/recipes/complexSearch?query=${name}&number=100&addRecipeInformation=true&apiKey=${API_KEYS}`
     );

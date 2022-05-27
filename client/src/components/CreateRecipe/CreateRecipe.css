@@ -70,7 +70,7 @@ form {
   border: none;
   border-radius: 0.5em;
   color: white;
-  width: 10%;
+  width: min-content;
   padding: 0.938em 2em;
   text-align: center;
   text-decoration: none;
@@ -118,7 +118,14 @@ form {
   transition: 0.2s;
 }
 .boton_create:hover {
-  background-color: #23BF0B;
+  background-color: #23bf0b;
   color: black;
   border-color: #0d0d0d;
+}
+
+@media screen and (max-width: 425px) {
+  .img__create {
+    width: auto;
+    height: 100vh;
+  }
 }

@@ -1,29 +1,51 @@
-.input{
-    padding: 0;
-    margin: 0;
-    position: relative;
-    display: flex;
-    font-size: 1.25em;
-    box-sizing: border-box;    
-    font-family: sans-serif;
+.input {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  display: flex;
+  font-size: 1.25em;
+  box-sizing: border-box;
+  font-family: sans-serif;
 }
-.searchBar[type="text"]{
-background: #fff;
-width: 18.75em;
-height: 2.5em;
-border:none;
-outline: none;
-padding: 0 1.563em;
-border-radius: 1.563em 0 0 1.563em;
-margin-right: 0;
+.searchBar[type="text"] {
+  background: #fff;
+  width: 18.75em;
+  height: 2.5em;
+  border: none;
+  outline: none;
+  padding: 0 1.563em;
+  border-radius: 1.563em 0 0 1.563em;
+  margin-right: 0;
 }
-.searchBbutton[type="submit"]{
+.searchBbutton[type="submit"] {
+  position: relative;
+  border-radius: 0 1.563em 1.563em 0;
+  width: 9.375em;
+  height: 2.5em;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: black;
+}
+@media screen and (max-width: 425px) {
+  .searchBar[type="text"] {
+    background: #fff;
+    width: 12.75em;
+    height: 2.5em;
+    border: none;
+    outline: none;
+    padding: 0 1.563em;
+    border-radius: 1.563em 0 0 1.563em;
+    margin-right: 0;
+  }
+  .searchBbutton[type="submit"] {
     position: relative;
     border-radius: 0 1.563em 1.563em 0;
-    width: 9.375em;
+    width: 7.375em;
     height: 2.5em;
-    border:none;
-    outline:none;
+    border: none;
+    outline: none;
     cursor: pointer;
     color: black;
+  }
 }

@@ -1,14 +1,9 @@
-
-/* .paginado {
-    display: inline-block;
-} */
 .paginado button{
   background-color: #e8e8e8;
   padding: 0.5em 1em;
   border: 1px;
   border-color: black;
   cursor: pointer;
-  /* float: left; */
 }
 .paginado a {
     color: black;

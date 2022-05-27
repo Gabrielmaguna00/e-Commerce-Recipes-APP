@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDiets, postRecipes } from "../../actions";
 import "./CreateRecipe.css";
 import fondo_create from "../../Image/fondo.jpg";
-import DeleteIcon from "@mui/icons-material/Delete";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import Swal from "sweetalert2";
 
@@ -17,8 +16,9 @@ const validate = (input) => {
     errors.summary = "A summary of the dish is required!";
   } else if (!input.healthScore) {
     errors.healthScore = "A healthy level of food is required";
-  } else if ((!(input.healthScore >= 0)||!(input.healthScore<=100))) {
-    errors.healthScore = "Enter a number greater than or equal to 0 and less than or equal to 100";
+  } else if (!(input.healthScore >= 0) || !(input.healthScore <= 100)) {
+    errors.healthScore =
+      "Enter a number greater than or equal to 0 and less than or equal to 100";
   } else if (!input.steps) {
     errors.steps = "A step by step recipe is required";
   }
@@ -40,10 +40,12 @@ export default function CreateRecipe() {
   });
   const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
-
+  const allDiets = useSelector((state) => state.diets);
+  
   useEffect(() => {
-    dispatch(getDiets());
-  }, [dispatch]);
+    //traigo las dietas para mostrarlas en mi select, en caso que el estado este vacio: despacho mi action
+    allDiets.length === 0 && dispatch(getDiets());
+  }, [dispatch, allDiets.length]);
 
   const handleChange = (e) => {
     setInput({
@@ -73,10 +75,10 @@ export default function CreateRecipe() {
       e.preventDefault();
       dispatch(postRecipes(input));
       Swal.fire({
-        title: 'Success!',
-        text: 'Recipe created!',
-        icon: 'success',
-        confirmButtonText: 'Ok!'
+        title: "Success!",
+        text: "Recipe created!",
+        icon: "success",
+        confirmButtonText: "Ok!",
       }).then(function () {
         navigate("/home");
       });

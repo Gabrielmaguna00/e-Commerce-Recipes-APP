@@ -76,8 +76,8 @@
   width: 92%;
   align-items: flex-start;
 }
-.boton_delete{
-  background-color: #0D0D0D;
+.boton_delete {
+  background-color: #0d0d0d;
   border: solid 0.1em white;
   border-radius: 0.5em;
   color: white;
@@ -91,7 +91,24 @@
   transition: 0.2s;
 }
 .boton_delete:hover {
-  background-color: #F21B2D;
+  background-color: #f21b2d;
   color: black;
-  border-color: #0D0D0D;
+  border-color: #0d0d0d;
+}
+@media screen and (max-width: 425px) {
+  .img__detalle {
+    width: auto;
+    height: 100vh;
+  }
+  .todo {
+    display: flex;
+    border: solid 1px black;
+    border-radius: 0.5em;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    flex-direction: column;
+    align-items: center;
+    width: 99%;
+    margin: 0.5em;
+  }
 }

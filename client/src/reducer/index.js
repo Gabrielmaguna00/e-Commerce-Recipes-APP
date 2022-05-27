@@ -1,7 +1,7 @@
 const initialState = {
   recipes: [],
-  diets: [],
   allRecipes: [],
+  diets: [],
   detail: [],
   errores: "",
 };
@@ -73,11 +73,9 @@ function rootReducer(state = initialState, action) {
             );
       return {
         ...state,
-        // nameOrScore:'name',
         recipes: order,
       };
     case "FILTER_BY_SCORE":
-      console.log(state.recipes);
       const orden =
         action.payload === "des"
           ? state.recipes.sort((a, b) =>
@@ -96,7 +94,6 @@ function rootReducer(state = initialState, action) {
             );
       return {
         ...state,
-        // nameOrScore:'score',
         recipes: orden,
       };
     case "RESET":
