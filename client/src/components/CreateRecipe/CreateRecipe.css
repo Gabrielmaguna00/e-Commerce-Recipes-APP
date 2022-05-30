@@ -126,6 +126,6 @@ form {
 @media screen and (max-width: 425px) {
   .img__create {
     width: auto;
-    height: 100vh;
+    height: 100%;
   }
 }

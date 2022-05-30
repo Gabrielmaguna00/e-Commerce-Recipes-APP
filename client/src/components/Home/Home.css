@@ -147,6 +147,23 @@ span {
   height: 100vh;
 }
 @media screen and (max-width: 425px) {
+  .container {
+    width: 100%;
+    max-width: 75em;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 690px) {
+  .img__fondo {
+    width: auto;
+    height: 100vh;
+  }
   .nav__1 {
     display: flex;
     justify-content: space-around;
@@ -159,9 +176,5 @@ span {
     align-items: center;
     justify-content: space-around;
     flex-wrap: wrap;
-  }
-  .img__fondo {
-    width: auto;
-    height: 100vh;
   }
 }
